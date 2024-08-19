@@ -39,7 +39,7 @@ const insertGenre = async (categoryId, genreName) => {
     [processedGenreName, categoryId]
   );
   if (rows.length === 0) {
-    return true;
+    // await pool.query(`INSERT INTO genres (name,category_id) VALUES ()`,[])
   }
   return false;
 };
