@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/createGenreForm.css" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Create Genre In Category</h1>
+    <form
+      action="/category/createGenre?categoryId=<%=locals.categoryId%>"
+      method="POST"
+    >
+      <label>Genre Name: <input type="text" name="genre-name" /></label>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

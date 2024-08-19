@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= locals.title %></title>
+    <link rel="stylesheet" href="/static/category.css" />
+  </head>
+  <body>
+    <h1><%= locals.title %></h1>
+    <form
+      action="<%=`/category?categoryId=${locals.categoryId}&categoryName=${locals.title}`%>"
+      method="POST"
+    >
+      <label
+        ><span>Search Genre: </span
+        ><input type="text" name="genre" value="<%=locals.searchValue%>"
+      /></label>
+      <button>Search</button>
+    </form>
+    <h2>Genres</h2>
+    <a href="/category/createGenre?categoryId=<%=locals.categoryId%>"
+      ><button class="create-genre-btn">Create Genre</button></a
+    >
+    <div class="genres">
+      <% for(let genre of locals.genres) {%>
+      <div class="genre">
+        <h3><%=genre.name%></h3>
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>

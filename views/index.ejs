@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entertainment Box</title>
+    <link rel="stylesheet" href="static/index.css" />
+  </head>
+  <body>
+    <h1>Entertainment Box</h1>
+    <h2>Categories</h2>
+    <div class="categories">
+      <% for(let category of locals.categories) {%>
+      <a
+        href="<%=`/category?categoryId=${category.id}&categoryName=${category.name}`%>"
+      >
+        <div class="category">
+          <h3><%= category.name %></h3>
+        </div>
+      </a>
+      <%}%>
+    </div>
+  </body>
+</html>

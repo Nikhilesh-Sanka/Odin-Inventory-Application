@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 100px auto;
+}
+
+label {
+  display: flex;
+  width: max-content;
+  margin: 50px auto;
+  align-items: center;
+}
+
+form button {
+  background-color: blue;
+  color: white;
+  border: none;
+  height: 35px;
+  width: 70px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+@media (max-width: 400px) {
+  label {
+    flex-direction: column;
+  }
+}
