@@ -39,6 +39,7 @@ form button {
   border-radius: 10px;
 }
 form p {
+  text-align: center;
   margin: 10px auto 40px auto;
 }
 h2 {
