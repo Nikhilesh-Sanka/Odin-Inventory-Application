@@ -29,6 +29,11 @@ let SQL = `
                                                 ('action',2),
                                                 ('drama',2),
                                                 ('sitcom',2);
+    INSERT INTO movies (name,description,genre_id) VALUES ('abc','great movie',1),
+                                                          ('bcd','great movie',1),
+                                                          ('cde','great movie',1),
+                                                          ('abc','great movie',2),
+                                                          ('bcd','great movie',2);
 `;
 
 const main = async () => {

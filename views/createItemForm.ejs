@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Item Form</title>
+    <link rel="stylesheet" href="/static/createItemForm.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Categories</a></li>
+        <li>
+          <a
+            href="/category?categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.categoryName%></a
+          >
+        </li>
+        <li>
+          <a
+            href="/category/genre?genreName=<%=locals.genreName%>&genreId=<%=locals.genreId%>&categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.genreName%></a
+          >
+        </li>
+        <li>Create Item</li>
+      </ul>
+    </nav>
+    <h1>Create <%=locals.categoryName%></h1>
+    <form
+      action="/category/genre/createItem?genreId=<%=locals.genreId%>&categoryName=<%=locals.categoryName%>&genreName=<%=locals.genreName%>&categoryId=<%=locals.categoryId%>"
+      method="POST"
+    >
+      <label
+        ><%=locals.categoryName%> Name: <input type="text" name="item-name"
+      /></label>
+      <label>Description: <input type="text" name="item-description" /></label>
+      <button>Submit</button>
+    </form>
+    <%if(locals.errors){%>
+    <h2>Errors</h2>
+    <div class="errors">
+      <% for(let error of locals.errors) {%>
+      <p><%=error.msg%></p>
+      <%}%>
+    </div>
+    <%}%>
+  </body>
+</html>

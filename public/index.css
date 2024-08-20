@@ -3,6 +3,19 @@
   margin: 0;
   padding: 0;
 }
+nav {
+  ul {
+    display: flex;
+    list-style-type: none;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+  }
+  ul li::before {
+    content: url("/static/arrow.svg?width=10px");
+  }
+}
 a {
   color: white;
   text-decoration: none;

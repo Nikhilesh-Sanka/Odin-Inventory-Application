@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Item Form</title>
+    <link rel="stylesheet" href="/static/editItemForm.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Categories</a></li>
+        <li>
+          <a
+            href="/category?categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.categoryName%></a
+          >
+        </li>
+        <li>
+          <a
+            href="/category/genre?genreName=<%=locals.genreName%>&genreId=<%=locals.genreId%>&categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.genreName%></a
+          >
+        </li>
+        <li>Edit Item Form</li>
+      </ul>
+    </nav>
+    <h1>Edit <%=locals.categoryName%></h1>
+    <form
+      action="/category/genre/editItem?itemId=<%=locals.itemId%>&genreId=<%=locals.genreId%>&genreName=<%=locals.genreName%>&categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+      method="POST"
+    >
+      <label
+        ><%locals.categoryName%> Name:<input
+          name="item-name"
+          type="text"
+          value="<%=locals.nameValue!==undefined?locals.nameValue:locals.movie.name%>"
+      /></label>
+      <label
+        >Description:<input
+          name="item-description"
+          type="text"
+          value="<%=locals.descriptionValue!==undefined?locals.descriptionValue:locals.movie.description%>"
+      /></label>
+      <button>Submit</button>
+    </form>
+    <%if(locals.errors) {%>
+    <h2>Errors</h2>
+    <%for(let error of locals.errors) {%>
+    <p><%=error.msg%></p>
+    <%}%> <%}%>
+  </body>
+</html>

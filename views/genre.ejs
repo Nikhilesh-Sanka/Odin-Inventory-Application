@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="/static/categoryAndGenre.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Categories</a></li>
+        <li>
+          <a
+            href="/category?categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.categoryName%></a
+          >
+        </li>
+        <li><%=locals.title%></li>
+      </ul>
+    </nav>
+    <h1>
+      <%=locals.title.slice(0,1).toUpperCase()+locals.title.slice(1,)%>
+      <%=locals.categoryName%>
+    </h1>
+    <form
+      action="/category/genre?genreId=<%= locals.genreId %>&genreName=<%=locals.title%>&categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+      method="POST"
+    >
+      <label
+        ><span>Search <%=locals.categoryName%>: </span
+        ><input type="text" name="movie" value="<%=locals.searchValue%>"
+      /></label>
+      <button>Search</button>
+    </form>
+    <h2><%=locals.categoryName%></h2>
+    <a
+      href="/category/genre/createItem?genreId=<%=locals.genreId%>&categoryName=<%=locals.categoryName%>&genreName=<%=locals.title%>&categoryId=<%=locals.categoryId%>"
+      ><button class="create-movie-btn">
+        Create <%=locals.categoryName%>
+      </button></a
+    >
+    <div class="movies">
+      <% for(let movie of locals.movies) {%>
+      <div class="movie">
+        <h3>
+          <a href=""><%=movie.name%>(<span><%=movie.description%></span>)</a>
+        </h3>
+        <button>
+          <a
+            href="/category/genre/editItem?itemId=<%=movie.id%>&genreId=<%=locals.genreId%>&genreName=<%=locals.title%>&categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            >Edit</a
+          >
+        </button>
+        <button>
+          <a
+            href="/category/genre/deleteItem?itemId=<%=movie.id%>&genreId=<%=locals.genreId%>&genreName=<%=locals.title%>&categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            >Delete</a
+          >
+        </button>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>

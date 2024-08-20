@@ -3,17 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/createGenreForm.css" />
+    <link rel="stylesheet" href="/static/createGenreForm.css" />
     <title></title>
   </head>
   <body>
+    <nav>
+      <ul>
+        <li><a href="/">Categories</a></li>
+        <li>
+          <a
+            href="/category?categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.categoryName%></a
+          >
+        </li>
+        <li>Create Genre</li>
+      </ul>
+    </nav>
     <h1>Create Genre In Category</h1>
     <form
-      action="/category/createGenre?categoryId=<%=locals.categoryId%>"
+      action="/category/createGenre?categoryId=<%=locals.categoryId%>&categoryName=<%=locals.categoryName%>"
       method="POST"
     >
       <label>Genre Name: <input type="text" name="genre-name" /></label>
+      <p>
+        (The names are case insensitive so same matching genre names will not be
+        created)
+      </p>
       <button>Submit</button>
     </form>
+    <% if(locals.errors) {%>
+    <h2>Error</h2>
+    <ol>
+      <% for (let err of locals.errors){%>
+      <li><%=err.msg%></li>
+      <%}%> <%}%>
+    </ol>
   </body>
 </html>

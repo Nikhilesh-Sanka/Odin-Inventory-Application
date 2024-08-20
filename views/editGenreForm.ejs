@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Genre</title>
+    <link rel="stylesheet" href="/static/editGenreForm.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Categories</a></li>
+        <li>
+          <a
+            href="/category?categoryName=<%=locals.categoryName%>&categoryId=<%=locals.categoryId%>"
+            ><%=locals.categoryName%></a
+          >
+        </li>
+        <li>Edit Genre</li>
+      </ul>
+    </nav>
+    <h1>Edit <%=locals.categoryName%>(<%=locals.genre.name%>)</h1>
+    <form
+      action="/category/editGenre?categoryId=<%=locals.categoryId%>&categoryName=<%=locals.categoryName%>&genreId=<%=locals.genreId%>"
+      method="POST"
+    >
+      <label
+        >Genera Name:
+        <input
+          name="genre-name"
+          type="text"
+          value="<%=locals.nameValue!==undefined?locals.nameValue:locals.genre.name%>"
+      /></label>
+      <p style="text-align: center">
+        (If u try to enter the name which some other genre has nothing happens)
+      </p>
+      <button>Submit</button>
+    </form>
+    <%if(locals.errors){%>
+    <h2>Errors</h2>
+    <div class="errors">
+      <%for(let error of errors){%>
+      <p><%=error.msg%></p>
+      <%}%>
+    </div>
+    <%}%>
+  </body>
+</html>

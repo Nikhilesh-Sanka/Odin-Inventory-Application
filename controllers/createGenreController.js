@@ -3,7 +3,10 @@ const { body, validationResult } = require("express-validator");
 
 const getCreateGenreController = (req, res) => {
   let categoryId = req.query["categoryId"];
-  res.render("createGenreForm", { categoryId });
+  res.render("createGenreForm", {
+    categoryId,
+    categoryName: req.query["categoryName"],
+  });
 };
 
 const validateResult = [
@@ -20,13 +23,19 @@ const postCreateGenreController = [
   async function (req, res) {
     let errors = validationResult(req).errors;
     if (errors.length === 0) {
-      let result = await queries.insertGenre(
+      await queries.insertGenre(
         req.query["categoryId"],
         req.body["genre-name"]
       );
-      res.send(`Result: ${result}`);
+      res.redirect(
+        `/category?categoryId=${req.query["categoryId"]}&categoryName=${req.query["categoryName"]}`
+      );
     }
-    res.send("Enter valid name");
+    res.render("createGenreForm", {
+      errors,
+      categoryId: req.query["categoryId"],
+      categoryName: req.query["categoryName"],
+    });
   },
 ];
 
