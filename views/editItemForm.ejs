@@ -42,6 +42,10 @@
           type="text"
           value="<%=locals.descriptionValue!==undefined?locals.descriptionValue:locals.movie.description%>"
       /></label>
+      <p>
+        (If you set the name of the item to a name that already exists in the
+        category then nothing happens)
+      </p>
       <button>Submit</button>
     </form>
     <%if(locals.errors) {%>

@@ -34,6 +34,10 @@
         ><%=locals.categoryName%> Name: <input type="text" name="item-name"
       /></label>
       <label>Description: <input type="text" name="item-description" /></label>
+      <p>
+        (If you try to create items with name that already exists then nothing
+        happens)
+      </p>
       <button>Submit</button>
     </form>
     <%if(locals.errors){%>

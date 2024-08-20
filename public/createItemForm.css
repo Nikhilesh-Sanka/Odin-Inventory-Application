@@ -28,6 +28,12 @@ label {
   width: max-content;
   margin: 40px auto;
 }
+form label:last-of-type {
+  margin: 40px auto 10px auto;
+}
+form p {
+  margin: 10px auto 40px auto;
+}
 form button {
   display: block;
   width: 70px;
